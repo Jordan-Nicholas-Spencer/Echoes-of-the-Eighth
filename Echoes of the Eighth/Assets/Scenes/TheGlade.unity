@@ -1637,7 +1637,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3363108460247933561, guid: 2195ed6bed794409eb682cfa75fc541c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3363108460248432130, guid: 2195ed6bed794409eb682cfa75fc541c, type: 3}
@@ -4863,14 +4864,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  runSpeed: 7
+  runSpeed: 6
   rotationSpeed: 720
+  groundSnapRate: 100
+  groundBrakeRate: 80
+  airControl: 3
   gravity: -9.81
+  airGravityMultiplier: 1.5
   groundedGravity: -2
-  jumpHeight: 1.2
+  jumpHeight: 1.8
+  coyoteTime: 0.12
+  jumpBuffer: 0.12
+  jumpCooldown: 0.15
   locomotionParam: locomotion
+  stJump: RunningJump02
+  stKickR: KickR
+  stCast01: CastSpell01
+  stCast02: CastSpell02
+  preActionBrakeTime: 0.12
+  preActionBrakeRate: 90
+  freezeHorizontalDuringAction: 1
+  kickEarlyUnlockSeconds: 0.65
+  castToLocomotionFade: 0.5
+  castHandoffDelay: 0.15
   cameraRelative: 1
   cameraTransform: {fileID: 1881341282}
+  faceInputWhenBacking: 1
+  particleBarbarian1: {fileID: 168442, guid: a26d3a53c75fb40f69d6073c0ead2f0e, type: 3}
+  positionBarbarian1: {fileID: 1353190615}
+  repeatEverySeconds: 5
+  fxLifetimeSeconds: 3
 --- !u!143 &1275264063
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5104,6 +5127,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 91d652779ec7140488b6b8e360497937, type: 3}
   m_PrefabInstance: {fileID: 1808520112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1353190615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1956009718276876703, guid: 2195ed6bed794409eb682cfa75fc541c, type: 3}
+  m_PrefabInstance: {fileID: 281451191}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1375576651
 PrefabInstance:
@@ -7077,10 +7105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1275264053}
   offset: {x: 0, y: 1.6, z: -3}
-  followSmooth: 10
-  mouseSensitivity: 150
+  sens: 120
   minPitch: -30
   maxPitch: 70
+  followLerp: 12
 --- !u!1 &1904627232
 GameObject:
   m_ObjectHideFlags: 0

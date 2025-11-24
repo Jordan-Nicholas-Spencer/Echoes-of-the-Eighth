@@ -1,22 +1,32 @@
 using UnityEngine;
 
-public class ThirdPersonCamera : MonoBehaviour
+public class ThirdPersonCamera_FinalSnap : MonoBehaviour
 {
-    public Transform target;                       // drag your Human root here
-    public Vector3 offset = new Vector3(0, 1.6f, -3f);
-    public float followSmooth = 10f;
-    public float mouseSensitivity = 150f;
-    public float minPitch = -30f, maxPitch = 70f;
+    public Transform target;
+    public Vector3 offset = new Vector3(0, 1.7f, -3f);
+    public float sens = 120f;
+    public float minPitch = -20f, maxPitch = 70f;
+    public float followLerp = 12f;
 
     float yaw, pitch;
+    bool eatFirstMouseDelta = true;
+
+    void Awake()
+    {
+        if (!target) target = GameObject.FindWithTag("Player")?.transform;
+        if (target)
+        {
+            yaw = target.eulerAngles.y;
+            pitch = 10f;
+            var rot = Quaternion.Euler(pitch, yaw, 0f);
+            transform.position = target.position + rot * offset;
+            transform.rotation = rot;
+        }
+    }
 
     void Start()
     {
-        if (!target)
-            target = GameObject.FindWithTag("Player")?.transform; // optional convenience
-        var a = transform.eulerAngles; yaw = a.y; pitch = a.x;
-
-        Cursor.lockState = CursorLockMode.Locked;  // optional
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
@@ -24,15 +34,17 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         if (!target) return;
 
-        // mouse orbit
-        yaw   += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
-        var rot = Quaternion.Euler(pitch, yaw, 0f);
+        float mx = Input.GetAxis("Mouse X");
+        float my = Input.GetAxis("Mouse Y");
+        if (eatFirstMouseDelta) { mx = 0f; my = 0f; eatFirstMouseDelta = false; }
 
-        // follow
-        var desiredPos = target.position + rot * offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPos, 1f - Mathf.Exp(-followSmooth * Time.deltaTime));
+        yaw   += mx * sens * Time.deltaTime;
+        pitch -= my * sens * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+
+        var rot = Quaternion.Euler(pitch, yaw, 0f);
+        Vector3 desired = target.position + rot * offset;
+        transform.position = Vector3.Lerp(transform.position, desired, 1f - Mathf.Exp(-followLerp * Time.deltaTime));
         transform.rotation = rot;
     }
 }
