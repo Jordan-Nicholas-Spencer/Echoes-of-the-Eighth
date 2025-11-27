@@ -6,15 +6,32 @@ using UnityEngine.AI;
 public class MonsterNavigation : MonoBehaviour
 {
     public NavMeshAgent monsterAgent;
+    public Transform playerTransform;
 
     //Array of empty game objects that are points for the agent to walk to
     public Transform[] wanderPoints;
 
     private int currentIndex = -1;
+
+    private float distanceToPlayer;
+
+    [SerializeField] private float detectionRadius = 6f;
+
+    [SerializeField] private float runMaxSpeed = 4.5f;
+
+    [SerializeField] private float walkMaxSpeed = 2.5f;
     // Update is called once per frame
     void Update()
     {
-        WanderAround();
+        distanceToPlayer = Vector3.Distance(gameObject.transform.position, playerTransform.transform.position);
+        if (distanceToPlayer < detectionRadius)
+        {
+            TargetPlayer();
+        }
+        else
+        {
+            WanderAround();
+        }
     }
 
     //Pick a new wander point if agent has reached its current point
@@ -41,5 +58,12 @@ public class MonsterNavigation : MonoBehaviour
 
         currentIndex = nextIndex;
         monsterAgent.SetDestination(wanderPoints[currentIndex].position);
+        monsterAgent.speed = walkMaxSpeed;
+    }
+
+    void TargetPlayer()
+    {
+        monsterAgent.SetDestination(playerTransform.position);
+        monsterAgent.speed = runMaxSpeed;
     }
 }
