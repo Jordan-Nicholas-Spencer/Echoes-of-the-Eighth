@@ -13,13 +13,15 @@ public class MonsterNavigation : MonoBehaviour
 
     private int currentIndex = -1;
 
-    private float distanceToPlayer;
+    public float distanceToPlayer = 100f;
 
     [SerializeField] private float detectionRadius = 6f;
 
     [SerializeField] private float runMaxSpeed = 4.5f;
 
     [SerializeField] private float walkMaxSpeed = 2.5f;
+
+    [SerializeField] private float attackDistance = 3f;
     // Update is called once per frame
     void Update()
     {
@@ -57,12 +59,14 @@ public class MonsterNavigation : MonoBehaviour
         }
 
         currentIndex = nextIndex;
+        monsterAgent.stoppingDistance = 0f;
         monsterAgent.SetDestination(wanderPoints[currentIndex].position);
         monsterAgent.speed = walkMaxSpeed;
     }
 
     void TargetPlayer()
     {
+        monsterAgent.stoppingDistance = attackDistance;
         monsterAgent.SetDestination(playerTransform.position);
         monsterAgent.speed = runMaxSpeed;
     }

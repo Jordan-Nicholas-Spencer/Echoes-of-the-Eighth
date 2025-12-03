@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class MonsterAnimation : MonoBehaviour
 {
@@ -9,14 +11,55 @@ public class MonsterAnimation : MonoBehaviour
 
     private MonsterNavigation _monsterNavigationScript;
 
+    private NavMeshAgent monsterAgent;
+
+    private bool canAttack = true;
+    [SerializeField] private float attackCooldown = 5f;
+
     private void Awake()
     {
         _monsterNavigationScript = GetComponent<MonsterNavigation>();
+        monsterAgent = _monsterNavigationScript.monsterAgent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("Speed", _monsterNavigationScript.monsterAgent.velocity.magnitude);
+       // Debug.Log("distance: " + _monsterNavigationScript.distanceToPlayer);
+        //Debug.Log("Attack1 Param: " + animator.GetBool("Attack1"));
+        
+        animator.SetFloat("Speed", monsterAgent.velocity.magnitude);
+        if (_monsterNavigationScript.distanceToPlayer < 5 && canAttack)
+        {
+            PlayAttackAnimation();
+            //monsterAgent.speed = 0f;
+            canAttack = false;
+            StartCoroutine(StartCooldown());
+        }
+    }
+
+    void PlayAttackAnimation()
+    {
+        int attackIndex = Random.Range(0, 3);
+        print(attackIndex);
+        switch (attackIndex)
+        {
+            case 0:
+                animator.SetTrigger("Attack1");
+                break;
+            case 1:
+                animator.SetTrigger("Attack2");
+                break;
+            case 2:
+                animator.SetTrigger("Attack3");
+                break;
+        }
+        
+    }
+
+    IEnumerator StartCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 }
