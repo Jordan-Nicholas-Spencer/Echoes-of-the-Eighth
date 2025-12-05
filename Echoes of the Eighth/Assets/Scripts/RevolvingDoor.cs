@@ -5,8 +5,13 @@ using UnityEngine;
 public class RevolvingDoor : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 25f;
-    void Update()
+    
+    //TODO add as a listener for when the fireball hits the collider, door will open when both are hit
+    void Rotate()
     {
-        transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
+        while (transform.rotation.y < 90)
+        {
+            transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
+        }
     }
 }
