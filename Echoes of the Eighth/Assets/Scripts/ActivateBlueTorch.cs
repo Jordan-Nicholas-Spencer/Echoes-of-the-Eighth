@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ActivateBlueTorch : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class ActivateBlueTorch : MonoBehaviour
 
     public void ToggleLight()
     {
+        print("hit");
         pointLight = GetComponentInChildren<Light>();
         particles = GetComponentInChildren<ParticleSystem>();
         

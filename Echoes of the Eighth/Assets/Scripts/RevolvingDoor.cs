@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RevolvingDoor : MonoBehaviour
 {
     [SerializeField] private GameObject targetHandler;
+    
     private TargetHandler targetHandlerScript;
     [SerializeField] private float openRotateSpeed = 25f;
     [SerializeField] private float closeRotateSpeed = 12.5f;

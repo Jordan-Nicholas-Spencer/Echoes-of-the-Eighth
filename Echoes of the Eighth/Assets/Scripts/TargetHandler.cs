@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TargetHandler : MonoBehaviour
 {
     [SerializeField] private GameObject revolvingDoor;
     [SerializeField] private List<GameObject> torches;
+    //[SerializeField] private List<GameObject> torchesExit;
     
     private RevolvingDoor revolvingDoorScript;
     private int targetsEnabled = 0;
