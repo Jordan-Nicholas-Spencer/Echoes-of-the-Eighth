@@ -7,23 +7,35 @@ public class ActivateBlueTorch : MonoBehaviour
 {
     private Light pointLight;
     private ParticleSystem particles;
-
-    private void Update()
-    {
-        //Test for toggle behavior
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ToggleLight();
-        }
-    }
+    [SerializeField] private GameObject targetHandler;
+    private bool targetEnabled = false;
+    private TargetHandler targetHandlerScript;
     
     //Toggle the particles and point light on/off
-    void ToggleLight()
+    private void Awake()
+    {
+        targetHandlerScript = targetHandler.GetComponent<TargetHandler>();
+    }
+
+    public void ToggleLight()
     {
         pointLight = GetComponentInChildren<Light>();
         particles = GetComponentInChildren<ParticleSystem>();
 
-        pointLight.enabled = !pointLight.enabled;
+        var pointLightEnabled = pointLight.enabled;
+        pointLightEnabled = !pointLightEnabled;
+        pointLight.enabled = pointLightEnabled;
+        targetEnabled = pointLightEnabled;
+        
+        if (targetEnabled)
+        {
+            targetHandlerScript.IncrementTargetsEnabled();
+        }
+        else
+        {
+            targetHandlerScript.DecrementTargetsEnabled();
+        }
+        
         if (particles.isPlaying)
         {
             particles.Stop();
