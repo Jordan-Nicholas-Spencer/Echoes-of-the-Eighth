@@ -11,7 +11,7 @@ public class ActivateBlueTorch : MonoBehaviour
     private bool targetEnabled = false;
     private TargetHandler targetHandlerScript;
     
-    //Toggle the particles and point light on/off
+    
     private void Awake()
     {
         targetHandlerScript = targetHandler.GetComponent<TargetHandler>();
@@ -29,20 +29,24 @@ public class ActivateBlueTorch : MonoBehaviour
         
         if (targetEnabled)
         {
+            particles.Play();
             targetHandlerScript.IncrementTargetsEnabled();
         }
         else
         {
+            particles.Stop();
             targetHandlerScript.DecrementTargetsEnabled();
         }
-        
-        if (particles.isPlaying)
-        {
-            particles.Stop();
-        }
-        else
-        {
-            particles.Play();
-        }
+    }
+
+    public void ForceOff()
+    {
+        pointLight = GetComponentInChildren<Light>();
+        particles = GetComponentInChildren<ParticleSystem>();
+
+        pointLight.enabled = false;
+        particles.Stop();
+
+        targetEnabled = false;
     }
 }

@@ -1,33 +1,60 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class RevolvingDoor : MonoBehaviour
 {
-    [SerializeField] private float rotateSpeed = 25f;
+    [SerializeField] private GameObject targetHandler;
+    private TargetHandler targetHandlerScript;
+    [SerializeField] private float openRotateSpeed = 25f;
+    [SerializeField] private float closeRotateSpeed = 12.5f;
+
+    private Quaternion closedRotation;
+    private Quaternion openRotation;
     
-    //TODO add as a listener for when the fireball hits the collider, door will open when both are hit
+    private void Awake()
+    {
+        closedRotation = transform.rotation;
+        openRotation = Quaternion.AngleAxis(90f, Vector3.up) * closedRotation;
+        targetHandlerScript = targetHandler.GetComponent<TargetHandler>();
+    }
+    
     public void Rotate()
     {
         StartCoroutine(RotateDoor());
-        while (transform.rotation.y < 90)
-        {
-            transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
-        }
     }
 
     private IEnumerator RotateDoor()
     {
-        float targetAngle = 90f;
-        float currentAngle = transform.eulerAngles.y;
-
-        while (currentAngle < targetAngle)
+        print("rotating");
+        while (Quaternion.Angle(transform.rotation, openRotation) > 0.1f)
         {
-            float step = rotateSpeed * Time.deltaTime;
-            currentAngle += step;
-            
-            transform.rotation = Quaternion.Euler(0, currentAngle, 0);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                openRotation,
+                openRotateSpeed * Time.deltaTime
+                );
+
             yield return null;
         }
+
+        transform.rotation = openRotation;
+        
+        while (Quaternion.Angle(transform.rotation, closedRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                closedRotation,
+                closeRotateSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        transform.rotation = closedRotation;
+
+        targetHandlerScript.ResetTargets();
     }
 }

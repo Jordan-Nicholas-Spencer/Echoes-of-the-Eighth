@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class TargetHandler : MonoBehaviour
 {
-    //[SerializeField] private List<GameObject> targetList;
-
     [SerializeField] private GameObject revolvingDoor;
+    [SerializeField] private List<GameObject> torches;
+    
     private RevolvingDoor revolvingDoorScript;
     private int targetsEnabled = 0;
     public int maxTargets;
@@ -31,5 +31,14 @@ public class TargetHandler : MonoBehaviour
     {
         targetsEnabled -= 1;
         print(targetsEnabled);
+    }
+
+    public void ResetTargets()
+    {
+        targetsEnabled = 0;
+        foreach (var torch in torches)
+        {
+            torch.GetComponent<ActivateBlueTorch>().ForceOff();
+        }
     }
 }
