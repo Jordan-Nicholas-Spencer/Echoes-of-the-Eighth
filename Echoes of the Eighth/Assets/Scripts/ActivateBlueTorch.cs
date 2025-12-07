@@ -10,18 +10,23 @@ public class ActivateBlueTorch : MonoBehaviour
     [SerializeField] private GameObject targetHandler;
     private bool targetEnabled = false;
     private TargetHandler targetHandlerScript;
+
+    private AudioSource torchAudio;
     
     
     private void Awake()
     {
         targetHandlerScript = targetHandler.GetComponent<TargetHandler>();
+        torchAudio = GetComponent<AudioSource>();
     }
 
     public void ToggleLight()
     {
         pointLight = GetComponentInChildren<Light>();
         particles = GetComponentInChildren<ParticleSystem>();
-
+        
+        torchAudio.Play();
+        
         var pointLightEnabled = pointLight.enabled;
         pointLightEnabled = !pointLightEnabled;
         pointLight.enabled = pointLightEnabled;
