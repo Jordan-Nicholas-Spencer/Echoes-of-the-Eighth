@@ -62,6 +62,7 @@ public class RevolvingDoor : MonoBehaviour
         transform.rotation = closedRotation;
 
         targetHandlerScript.ResetTargets();
+        print("Reset");
     }
 
     IEnumerator PlaySounds()

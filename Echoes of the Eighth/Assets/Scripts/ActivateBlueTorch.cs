@@ -24,6 +24,7 @@ public class ActivateBlueTorch : MonoBehaviour
     public void ToggleLight()
     {
         print("hit");
+        print("ToggleLight called on " + gameObject.name);
         pointLight = GetComponentInChildren<Light>();
         particles = GetComponentInChildren<ParticleSystem>();
         
@@ -52,6 +53,14 @@ public class ActivateBlueTorch : MonoBehaviour
         particles = GetComponentInChildren<ParticleSystem>();
 
         pointLight.enabled = false;
+        if (pointLight.enabled == false)
+        {
+            print("disabled");
+        }
+        else
+        {
+            print("enabled");
+        }
         particles.Stop();
 
         targetEnabled = false;

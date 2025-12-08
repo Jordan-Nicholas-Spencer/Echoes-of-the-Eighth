@@ -38,8 +38,11 @@ public class TargetHandler : MonoBehaviour
     public void ResetTargets()
     {
         targetsEnabled = 0;
+        print(targetsEnabled);
+        print("force off");
         foreach (var torch in torches)
         {
+            print("reset lights and particles");
             torch.GetComponent<ActivateBlueTorch>().ForceOff();
         }
     }
