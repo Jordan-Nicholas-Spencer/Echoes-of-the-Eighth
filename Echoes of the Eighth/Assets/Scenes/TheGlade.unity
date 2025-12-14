@@ -1455,6 +1455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human Male (v4.1.1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3363108460247933538, guid: 2195ed6bed794409eb682cfa75fc541c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3363108460248432130, guid: 2195ed6bed794409eb682cfa75fc541c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
