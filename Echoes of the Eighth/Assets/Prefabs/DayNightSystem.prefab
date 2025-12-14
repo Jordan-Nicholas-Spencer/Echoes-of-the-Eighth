@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 6
-  dayDuration: 15
+  dayDuration: 0.25
   sunLight: {fileID: 8192366180791824535}
   sunColorGradient:
     serializedVersion: 2
