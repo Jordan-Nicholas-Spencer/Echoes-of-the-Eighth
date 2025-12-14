@@ -69,6 +69,15 @@ public class SFB_MoveOverTime : MonoBehaviour {
 	// Also catch trigger collisions (if using trigger colliders)
 	void OnTriggerEnter(Collider other)
 	{
+		if (other.CompareTag("Blue Torch"))
+		{
+			print("hit");
+			var torch = other.GetComponent<ActivateBlueTorch>();
+			if (torch != null)
+			{
+				torch.ToggleLight();
+			}
+		}
 		Destroy(gameObject);
 	}
 }
