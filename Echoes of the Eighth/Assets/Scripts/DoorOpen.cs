@@ -20,7 +20,13 @@ public class DoorOpen : MonoBehaviour {
     private Vector3 closedPosition;
     private Vector3 openPosition;
 
+    public bool puzzleSolved = false;
+
     void Start() {
+
+        if (doorPart == null)
+            doorPart = transform;
+
         closedPosition = doorPart.position;
         openPosition = closedPosition + new Vector3(0f, openOffsetY, 0f);
     }
@@ -34,7 +40,7 @@ public class DoorOpen : MonoBehaviour {
         float currentHour = cycle.GetCurrentTime(); 
 
         // check for day and time
-        if (!hasOpened && currentDay >= unlockDay && currentHour >= openHour) {
+        if (!hasOpened && currentDay >= unlockDay && currentHour >= openHour || puzzleSolved) {
             isOpening = true;
         }
         // move object if open

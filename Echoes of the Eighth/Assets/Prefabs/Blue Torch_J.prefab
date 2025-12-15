@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 5278865822272278375}
   - component: {fileID: 478814901537245131}
   m_Layer: 0
-  m_Name: Blue Torch
+  m_Name: Blue Torch_J
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
