@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class MonsterNavigation : MonoBehaviour
 {
@@ -22,6 +24,16 @@ public class MonsterNavigation : MonoBehaviour
     [SerializeField] private float walkMaxSpeed = 2.5f;
 
     [SerializeField] private float attackDistance = 3f;
+
+    private AudioSource monsterAudio;
+
+    [SerializeField] private AudioClip detection;
+
+    private void Start()
+    {
+        monsterAudio = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {

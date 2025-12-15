@@ -16,10 +16,16 @@ public class MonsterAnimation : MonoBehaviour
     private bool canAttack = true;
     [SerializeField] private float attackCooldown = 5f;
 
+    private AudioSource monsterAudio;
+    [SerializeField] private AudioClip punch;
+    [SerializeField] private AudioClip slam;
+    [SerializeField] private AudioClip doublePunch;
+    [SerializeField] private AudioClip roar;
     private void Awake()
     {
         _monsterNavigationScript = GetComponent<MonsterNavigation>();
         monsterAgent = _monsterNavigationScript.monsterAgent;
+        monsterAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,12 +52,18 @@ public class MonsterAnimation : MonoBehaviour
         {
             case 0:
                 animator.SetTrigger("Attack1");
+                monsterAudio.PlayOneShot(punch);
                 break;
             case 1:
                 animator.SetTrigger("Attack2");
+                monsterAudio.PlayOneShot(doublePunch);
                 break;
             case 2:
                 animator.SetTrigger("Attack3");
+                monsterAudio.PlayOneShot(slam);
+                break;
+            case 3:
+                monsterAudio.PlayOneShot(roar);
                 break;
         }
         
