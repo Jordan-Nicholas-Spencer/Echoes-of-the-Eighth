@@ -358,8 +358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -220}
-  m_SizeDelta: {x: 220, y: 80}
+  m_AnchoredPosition: {x: 0, y: -48.99951}
+  m_SizeDelta: {x: 240, y: 136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &256693385
 MonoBehaviour:
@@ -1332,8 +1332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -9.7}
-  m_SizeDelta: {x: 220, y: 80.23045}
+  m_AnchoredPosition: {x: 0, y: -8.7}
+  m_SizeDelta: {x: 239, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030226565
 MonoBehaviour:
@@ -1355,7 +1355,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FIX THIS!!!! ADD INSTRUCTIONS AND CONTROLS.
+  m_text: "You wake in The Glade with no memory of how you arrived. The octagonal
+    walls tower above you, ancient and unforgiving. Every dawn, the maze doors open.
+    Every dusk, they seal shut. \n<color=#FFD700>THE RULES ARE SIMPLE. SURVIVAL IS
+    NOT.</color>\r\r\n<color=#FFD700>EXPLORE THE MAZE</color>\r\nVenture into the
+    shifting corridors before nightfall. Each day brings new paths, new mysteries.\r\r\n<color=#FFD700>FIND
+    THE PUZZLE ROOMS</color>\r\nHidden throughout the maze are chambers that hold
+    the key to escape. Solve their riddles. Unlock their secrets.\r\r\n<color=#FFD700>RETURN
+    BEFORE DARK</color>\r\nWhen the sun sets, the maze transforms. What hunts in
+    the darkness shows no mercy.\r \r\n<color=#FFD700>THE POWER WITHIN</color>\r\nYou
+    possess a gift - the ability to conjure fire. Use it wisely. Your power may be
+    the only thing standing between you and the night. The clock is always ticking.
+    The walls remember everything. The eighth day approaches. Will you find the truth
+    before the maze claims you? Or will you become another echo lost in its depths?\r\n\r\n<color=#FFD700>[CONTROLS]</color>\r\n<color=#FFD700>WASD</color>
+    - Move\r\n<color=#FFD700>Mouse</color> - Look Around\r\n<color=#FFD700>Right
+    Click</color> - Shoot Fireball\r\n<color=#FFD700>ESC</color> - Pause\r\n\r\nThe
+    maze awaits. Time is running out."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7e951bfec0f80942b7d830c88a7a263, type: 2}
   m_sharedMaterial: {fileID: -5516995133297626616, guid: c7e951bfec0f80942b7d830c88a7a263, type: 2}
@@ -1382,19 +1397,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9
-  m_fontSizeBase: 9
+  m_fontSize: 4.3
+  m_fontSizeBase: 4.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 1
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
