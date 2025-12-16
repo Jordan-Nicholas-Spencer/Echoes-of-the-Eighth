@@ -56,7 +56,8 @@ public class DayNightCycle : MonoBehaviour
      */
     public static DayNightCycle Instance { get; private set; }      // Allows other scripts to access this.
     private float currentTime;                                      // Current time in game hours. Eg: 14.5 = 2:30;                                  
-    
+    public int CurrentDay { get; private set; } = 1;                // Start at day 1
+    private float previousTime;                                     // Track when its a new day
     /*
      * Converts real time seconds into game hours, because deltaTime is given in seconds.
      * Example calculation:
@@ -87,6 +88,8 @@ public class DayNightCycle : MonoBehaviour
 
         // Update lighting to match start time.
         UpdateLighting();
+
+        previousTime = currentTime;   // remember initial time
     }
 
     // Update is called once per frame
@@ -100,6 +103,11 @@ public class DayNightCycle : MonoBehaviour
         {
             currentTime = 0f;
         }
+        //detect when its a new day
+        if (currentTime < previousTime) {
+        CurrentDay++;
+        }
+        previousTime = currentTime;
 
         // Update the sun and moon directional lighting.
         UpdateLighting();
@@ -119,11 +127,11 @@ public class DayNightCycle : MonoBehaviour
         {
             /* Calculate the angle of the sun.
              *  - timePercent * 360f, one full rotation over 24 hours.
-             *  - Substract 90f so that 0° is at the horizon.
+             *  - Substract 90f so that 0ï¿½ is at the horizon.
              * Examples:
-             *  - At sunrise (6:00AM) -> (timePercent = 0.25) -> 0.25 * 360 - 90 = 0° (Horizon)
-             *  - At noon (12:00PM) -> (timePercent = 0.5) -> 0.5 * 360 - 90 = 90° (Overhead)
-             *  - At sunset (6:00PM) -> (timePercent = 0.75) -> 0.75 * 360 - 90 = 180° (Horizon)
+             *  - At sunrise (6:00AM) -> (timePercent = 0.25) -> 0.25 * 360 - 90 = 0ï¿½ (Horizon)
+             *  - At noon (12:00PM) -> (timePercent = 0.5) -> 0.5 * 360 - 90 = 90ï¿½ (Overhead)
+             *  - At sunset (6:00PM) -> (timePercent = 0.75) -> 0.75 * 360 - 90 = 180ï¿½ (Horizon)
              */
             float sunAngle = timePercent * 360f - 90f;
 
@@ -145,7 +153,7 @@ public class DayNightCycle : MonoBehaviour
         if (moonLight != null)
         {
             /* Calculate the angle of the sun.
-             * Moon is opposite to the sun, so we add 90° offset.
+             * Moon is opposite to the sun, so we add 90ï¿½ offset.
              */
             float moonAngle = timePercent * 360f + 90f;
 
@@ -170,5 +178,8 @@ public class DayNightCycle : MonoBehaviour
     public float GetCurrentTime()
     {
         return currentTime;             // Returns current time as a number instead of a percentage.
+    }
+    public int GetCurrentDay() {
+    return CurrentDay;
     }
 }
