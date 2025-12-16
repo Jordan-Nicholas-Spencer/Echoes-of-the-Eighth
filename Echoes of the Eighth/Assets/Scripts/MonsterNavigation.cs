@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity_Store_Imports.Ilumisoft.Health_System.Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -29,22 +30,31 @@ public class MonsterNavigation : MonoBehaviour
 
     [SerializeField] private AudioClip detection;
 
+    private Health monsterHealthComponent;
+    [SerializeField] private GameObject playerHealthBar;
+
     private void Start()
     {
         monsterAudio = GetComponent<AudioSource>();
+        monsterHealthComponent = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
         distanceToPlayer = Vector3.Distance(gameObject.transform.position, playerTransform.transform.position);
-        if (distanceToPlayer < detectionRadius)
+        if ((distanceToPlayer < detectionRadius) && monsterHealthComponent.IsAlive)
         {
+            playerHealthBar.SetActive(true);
             TargetPlayer();
+        }
+        else if (monsterHealthComponent.IsAlive)
+        {
+            WanderAround();
         }
         else
         {
-            WanderAround();
+            playerHealthBar.SetActive(false);
         }
     }
 
@@ -76,6 +86,7 @@ public class MonsterNavigation : MonoBehaviour
         monsterAgent.speed = walkMaxSpeed;
     }
 
+    //Tracks the player and moves toward them
     void TargetPlayer()
     {
         monsterAgent.stoppingDistance = attackDistance;
