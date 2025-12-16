@@ -10172,6 +10172,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 424694474835280850, guid: cd432a5ca3fbb9047b8eeb4f3487ae3f, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3454138716865816064, guid: cd432a5ca3fbb9047b8eeb4f3487ae3f, type: 3}
       propertyPath: m_Name
       value: ClockUI
@@ -16131,6 +16135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8272ca68f0e1ddd40b4a0c5dd0c98766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockDay: 1
+  openHour: 6
+  closeHour: 17
+  doorPart: {fileID: 0}
+  puzzleSolved: 0
 --- !u!1001 &1924312386
 PrefabInstance:
   m_ObjectHideFlags: 0
