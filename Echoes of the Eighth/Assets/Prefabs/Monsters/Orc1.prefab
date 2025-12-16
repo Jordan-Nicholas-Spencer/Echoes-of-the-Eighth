@@ -989,22 +989,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4007c3ce259a6754aa81fbc0cf1cf280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterAgent: {fileID: 1418570273810744561}
-  playerTransform: {fileID: 0}
   wanderPoints:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  monsterAgent: {fileID: 1418570273810744561}
+  playerTransform: {fileID: 0}
   distanceToPlayer: 100
   detectionRadius: 15
   runMaxSpeed: 4.5
   walkMaxSpeed: 2.5
   attackDistance: 3
   detection: {fileID: 8300000, guid: 9b34b25153da0794fadb999c6479247f, type: 3}
-  playerHealthBar: {fileID: 3477800681233896033, guid: 8a3b00189821639499afe92aaa6737a1, type: 3}
+  playerHealthBar: {fileID: 0}
 --- !u!114 &4215163002753684313
 MonoBehaviour:
   m_ObjectHideFlags: 0
