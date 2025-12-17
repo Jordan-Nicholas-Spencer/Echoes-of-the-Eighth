@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 103991817968957634}
   m_Layer: 0
-  m_Name: Wander Point (2)
+  m_Name: Sergio 1 Wander Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4623168323559804111}
   m_Layer: 0
-  m_Name: Wander Point (4)
+  m_Name: Sergio 1 Wander Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7712428483778889743}
   m_Layer: 0
-  m_Name: Wander Point
+  m_Name: Sergio 1 Wander Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8645302976869707605}
   m_Layer: 0
-  m_Name: Wander Point (3)
+  m_Name: Sergio 1 Wander Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178952010931512126}
   m_Layer: 0
-  m_Name: Wander Point (1)
+  m_Name: Sergio 1 Wander Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8397375984557959709}
   m_Layer: 0
-  m_Name: Wander Point (5)
+  m_Name: Sergio 1 Wander Point (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

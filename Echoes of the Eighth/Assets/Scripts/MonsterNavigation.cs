@@ -1,50 +1,61 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity_Store_Imports.Ilumisoft.Health_System.Scripts;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class MonsterNavigation : MonoBehaviour
 {
-    public NavMeshAgent monsterAgent;
-    public Transform playerTransform;
-
+    [Header("Navigation Components")]
     //Array of empty game objects that are points for the agent to walk to
     public Transform[] wanderPoints;
+    public NavMeshAgent monsterAgent; 
+    public Transform playerTransform; //Used to track distance to player
 
-    private int currentIndex = -1;
-
+    [Header("Agent Values")]
     public float distanceToPlayer = 100f;
-
     [SerializeField] private float detectionRadius = 6f;
-
     [SerializeField] private float runMaxSpeed = 4.5f;
-
     [SerializeField] private float walkMaxSpeed = 2.5f;
-
     [SerializeField] private float attackDistance = 3f;
-
+    
+    private int currentIndex = -1; //used for random wandering
+    
+    [Header("Audio")]
     private AudioSource monsterAudio;
-
     [SerializeField] private AudioClip detection;
+
+    [Header("Monster/Player Health")]
+    private Health monsterHealthComponent;
+    [SerializeField] private GameObject playerHealthBar;
 
     private void Start()
     {
         monsterAudio = GetComponent<AudioSource>();
+        monsterHealthComponent = GetComponent<Health>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        //Check the distance from the player to the monster
         distanceToPlayer = Vector3.Distance(gameObject.transform.position, playerTransform.transform.position);
-        if (distanceToPlayer < detectionRadius)
+        if ((distanceToPlayer < detectionRadius) && monsterHealthComponent.IsAlive)
         {
+            //Go towards the player if within the detection radius
+            playerHealthBar.SetActive(true);
             TargetPlayer();
+        }
+        //Otherwise, wander randomly
+        else if (monsterHealthComponent.IsAlive)
+        {
+            WanderAround();
         }
         else
         {
-            WanderAround();
+            //Hide the player health bar when the monster is dead or too far away
+            playerHealthBar.SetActive(false);
         }
     }
 
@@ -76,6 +87,7 @@ public class MonsterNavigation : MonoBehaviour
         monsterAgent.speed = walkMaxSpeed;
     }
 
+    //Tracks the player and moves toward them
     void TargetPlayer()
     {
         monsterAgent.stoppingDistance = attackDistance;
