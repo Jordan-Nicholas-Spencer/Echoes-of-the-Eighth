@@ -8,17 +8,18 @@ using Random = UnityEngine.Random;
 
 public class MonsterAnimation : MonoBehaviour
 {
+    [Header("Animation")]
     public Animator animator;
     private MonsterNavigation _monsterNavigationScript;
     
     //Monster NavMesh Agent
     private NavMeshAgent monsterAgent;
     
-    //Cooldown Vars
+    [Header("Cooldown Variables")]
     private bool canAttack = true;
     [SerializeField] private float attackCooldown = 5f;
-
-    //Audio
+    
+    [Header("Audio")]
     private AudioSource monsterAudio;
     [SerializeField] private AudioClip punch;
     [SerializeField] private AudioClip slam;
@@ -27,6 +28,7 @@ public class MonsterAnimation : MonoBehaviour
     [SerializeField] private AudioClip death;
     private bool deathAudioPlayedOnce = false;
 
+    [Header("Health")]
     //Health Components
     private GameObject playerHealthGO;
     private Health playerHealthComponent;
@@ -66,7 +68,7 @@ public class MonsterAnimation : MonoBehaviour
         }
     }
     
-    //Play different attack animations
+    //Play different attack animations along with their corresponding sounds
     void PlayAttackAnimation()
     {
         bool applyDamage = _monsterNavigationScript.distanceToPlayer < 2; //Apply damage if close enough
@@ -97,19 +99,18 @@ public class MonsterAnimation : MonoBehaviour
                 animator.SetTrigger("Attack3");
                 monsterAudio.PlayOneShot(slam);
                 break;
-            case 3:
-                monsterAudio.PlayOneShot(roar);
-                break;
         }
         
     }
 
+    //Cooldown for attacks to prevent spamming
     IEnumerator StartCooldown()
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
 
+    //Play the monster death sound only once since being called from update
     void PlayDeathSoundOnce(bool hasBeenPlayed)
     {
         if (!hasBeenPlayed)

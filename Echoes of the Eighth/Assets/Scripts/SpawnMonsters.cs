@@ -9,8 +9,8 @@ public class SpawnMonsters : MonoBehaviour
     //To add a new monster to spawn, place a new monster prefab in the scene, attach the wander points in its Monster Navigation
     //script, attach this new monster to the monsters list and attach its starting transform in startPositions.
     [Header("Lists")]
-    [SerializeField] private GameObject[] monsters;
-    [SerializeField] private Vector3[] startPositions;
+    [SerializeField] private GameObject[] monsters; //Each monster in the scene
+    [SerializeField] private Vector3[] startPositions; //Their start positions for respawning
     
     [Header("Script Objects")]
     [SerializeField] private GameObject dayNightSystem;
