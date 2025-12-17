@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22243,7 +22243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1342959200176554030, guid: dd12fc78d7682b54a897714487128c7d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5600444998888558196, guid: dd12fc78d7682b54a897714487128c7d, type: 3}
       propertyPath: attackDistance
@@ -23038,6 +23038,8 @@ MonoBehaviour:
   slam: {fileID: 0}
   doublePunch: {fileID: 0}
   roar: {fileID: 0}
+  death: {fileID: 0}
+  monsterHealthBar: {fileID: 0}
 --- !u!1001 &1808483429
 PrefabInstance:
   m_ObjectHideFlags: 0
