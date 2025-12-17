@@ -9,9 +9,10 @@ public class MonsterCollisions : MonoBehaviour
     private Hitbox hitboxScript;
     private void Awake()
     {
-        hitboxScript = GetComponent<Hitbox>();
+        hitboxScript = GetComponent<Hitbox>(); //Hitbox is an imported script from the healthbar pack
     }
 
+    //If a fireball hits the monster hitbox, apply damage to the monster
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Fireball"))

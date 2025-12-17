@@ -17,7 +17,7 @@ public class GameOver : MonoBehaviour
     private Health playerHealthScript;
     
     [Header("Audio")]
-    [SerializeField] private AudioSource[] monsterSources;
+    [SerializeField] private AudioSource[] monsterSources; //Assign each monster in the scene to this lists in the inspector
 
     [SerializeField] private AudioSource playerAudio;
 
@@ -51,6 +51,7 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Mute every monster audio to not overlap with player death sound
     IEnumerator MuteMonsterAudio()
     {
         foreach (var source in monsterSources)

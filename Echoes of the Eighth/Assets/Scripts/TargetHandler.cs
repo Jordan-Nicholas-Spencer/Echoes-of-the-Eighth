@@ -4,45 +4,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+//Used for the target puzzle where the player must hit a specified number of torches before opening a rotating door
 public class TargetHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject revolvingDoor;
+    [Header("Door and Torches")]
+    [SerializeField] private GameObject revolvingDoor; //Reference to the door to rotate
     [SerializeField] private List<GameObject> torches;
-    //[SerializeField] private List<GameObject> torchesExit;
     
     private RevolvingDoor revolvingDoorScript;
     private int targetsEnabled = 0;
-    public int maxTargets;
+    public int maxTargets; //Number of targets needed to open the door
 
     private void Awake()
     {
         revolvingDoorScript = revolvingDoor.GetComponent<RevolvingDoor>();
     }
 
+    //Increment the number of targets enabled and rotate if the desired number has been reached
     public void IncrementTargetsEnabled()
     {
         targetsEnabled += 1;
-        print(targetsEnabled);
         if (targetsEnabled == maxTargets)
         {
             revolvingDoorScript.Rotate();
         }
     }
 
+    //Decrement the number of targets enabled
     public void DecrementTargetsEnabled()
     {
         targetsEnabled -= 1;
-        print(targetsEnabled);
     }
 
+    //Reset the number of targets enabled for the next run, and deactivate the lit torch components
     public void ResetTargets()
     {
         targetsEnabled = 0;
-        print(targetsEnabled);
-        print("force off");
         foreach (var torch in torches)
         {
-            print("reset lights and particles");
             torch.GetComponent<ActivateBlueTorch>().ForceOff();
         }
     }

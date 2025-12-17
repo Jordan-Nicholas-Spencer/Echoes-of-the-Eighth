@@ -22,10 +22,6 @@ public class MonsterNavigation : MonoBehaviour
     [SerializeField] private float attackDistance = 3f;
     
     private int currentIndex = -1; //used for random wandering
-    
-    [Header("Audio")]
-    private AudioSource monsterAudio;
-    [SerializeField] private AudioClip detection;
 
     [Header("Monster/Player Health")]
     private Health monsterHealthComponent;
@@ -33,7 +29,6 @@ public class MonsterNavigation : MonoBehaviour
 
     private void Start()
     {
-        monsterAudio = GetComponent<AudioSource>();
         monsterHealthComponent = GetComponent<Health>();
     }
     
