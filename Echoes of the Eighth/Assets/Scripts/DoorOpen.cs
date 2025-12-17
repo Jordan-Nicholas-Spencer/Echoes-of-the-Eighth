@@ -43,7 +43,6 @@ public class DoorOpen : MonoBehaviour {
             currentDay >= unlockDay &&
             currentHour >= openHour &&
             currentHour < closeHour;
-
         // true if puzzle solved
         bool shouldBeOpen = puzzleSolved || timeWindowOpen;
 
