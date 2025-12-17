@@ -59,8 +59,10 @@ public class Clock : MonoBehaviour
             displayHours = 12;
         }
 
+        int currentDay = dayNightCycle.GetCurrentDay();
+
         // Create the time string.
-        string time = $"{displayHours}:{minutes:00} {period}";
+        string time = $"Day {currentDay} {displayHours}:{minutes:00} {period}";
 
         // Display time on the screen.
         UpdateTime(time);        
