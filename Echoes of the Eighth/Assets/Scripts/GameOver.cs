@@ -17,8 +17,13 @@ public class GameOver : MonoBehaviour
     private Health playerHealthScript;
     
     [Header("Audio")]
-    [SerializeField] private AudioListener playerAudioListener;
-    
+    [SerializeField] private AudioSource[] monsterSources;
+
+    [SerializeField] private AudioSource playerAudio;
+
+    [SerializeField] private AudioClip playerDeath;
+
+    private bool ranOnce = false;
     //Add a listener to the respawn button to restart the game when game is over
     private void Start()
     {
@@ -29,14 +34,14 @@ public class GameOver : MonoBehaviour
     void Update()
     {
         //Check the playerHealth.IsAlive bool to see if the game is still going
-        if (!playerHealthScript.IsAlive)
+        if (!playerHealthScript.IsAlive && !ranOnce)
         {
             gameOverScreen.SetActive(true);
-            
+            ranOnce = true;
             //Unlock cursor for button click
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            playerAudioListener.enabled = false; //Mute audio
+            StartCoroutine(MuteMonsterAudio()); //Mute all monsters and play death sound
         }
     }
 
@@ -44,5 +49,17 @@ public class GameOver : MonoBehaviour
     void RestartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    IEnumerator MuteMonsterAudio()
+    {
+        foreach (var source in monsterSources)
+        {
+            source.enabled = false;
+        }
+
+        yield return new WaitForSeconds(1f);
+        
+        playerAudio.PlayOneShot(playerDeath, 0.5f);
     }
 }

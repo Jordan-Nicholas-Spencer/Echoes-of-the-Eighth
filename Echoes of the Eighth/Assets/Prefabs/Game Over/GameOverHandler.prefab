@@ -47,4 +47,14 @@ MonoBehaviour:
   gameOverScreen: {fileID: 0}
   respawnButton: {fileID: 0}
   playerHealthComponent: {fileID: 0}
-  playerAudioListener: {fileID: 0}
+  monsterSources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerAudio: {fileID: 0}
+  playerDeath: {fileID: 8300000, guid: 596c2e0c4c3f6944fab86919ae2bae41, type: 3}
