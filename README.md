@@ -51,10 +51,10 @@ The monsters will only attack if they spot you, adding a stealth element to nigh
 
 * Design 2 unique maze levels with puzzle elements.
 * Develop the day/night cycle system with dynamic lighting.
-* Create UI elements including the in-game clock and menu systems.
+* Create UI elements, including the in-game clock and menu systems.
 * Ensure all systems are well-documented and accessible to the team.
 
-### Dylan - Level Design \& Monster Animation.
+### Dylan - Level Design & Monster Animation.
 
 * Design 2 unique maze levels with puzzle elements.
 * Implement monster AI and behavior patterns.
@@ -68,14 +68,12 @@ The monsters will only attack if they spot you, adding a stealth element to nigh
 
 ## Project Status
 
-The game is currently in active development with significant progress made on core systems:
+The game is currently in active development, with significant progress made on core systems:
 
-* **The Glade** and **5 maze levels** have been fully designed.
+* **The Glade** and **all maze levels** have been fully designed.
 * **Day and night cycle system** is fully implemented with dynamic lighting.
-* **Clock UI** is functional and displays in 12-hour format.
+* **Clock UI** is functional and displays in 12-hour format, and displays what day the player is currently playing.
 * **Player character animation** is fully developed.
-
-We are now focusing on implementing monster AI, puzzle systems, and interactive door mechanics.
 
 ## Roadmap
 
@@ -87,26 +85,26 @@ We are now focusing on implementing monster AI, puzzle systems, and interactive 
 * \[x] Clock UI with 12-hour format display.
 * \[x] Player character animations.
 * \[x] Player movement system.
+* \[x] 8-door system in The Glade (one door opens each day).
+* \[x] Door opening/closing animations.
+* \[x] Puzzle room design and placement in each maze.
+* \[x] Puzzle-solving mechanics.
+* \[x] Monster AI and pathfinding.
+* \[x] Monster animations (idle, walk, attack).
+* \[x] Monster spawning system at sunset.
+* \[x] Player detection system for monsters.
+* \[x] Combat system.
+* \[x] Health and damage system.
+* \[x] Main menu and pause menu UI.
+* \[x] Victory/defeat conditions.
 
 ### 🚧 In Development.
 
-* \[ ] 8 door system in The Glade (one door opens each day).
-* \[ ] Door opening/closing animations.
-* \[ ] Puzzle room design and placement in each maze.
-* \[ ] Puzzle solving mechanics.
-* \[ ] Monster AI and pathfinding.
-* \[ ] Monster animations (idle, walk, attack).
-* \[ ] Monster spawning system at sunset.
-* \[ ] Player detection system for monsters.
-* \[ ] Combat system.
-* \[ ] Health and damage system.
+* \[ ] Sound effects and ambient audio.
 
 ### 📋 Planned Features.
 
-* \[ ] Main menu and pause menu UI.
-* \[ ] Sound effects and ambient audio.
 * \[ ] Background music (day and night themes).
 * \[ ] Save/load system.
 * \[ ] Player inventory system.
-* \[ ] Victory/defeat conditions.
 * \[ ] Progressive difficulty across levels.
